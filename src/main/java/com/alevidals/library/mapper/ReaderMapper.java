@@ -5,7 +5,7 @@ import com.alevidals.library.model.Reader;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "")
+@Mapper(componentModel = "spring")
 public interface ReaderMapper {
 
     ReaderMapper MAPPER = Mappers.getMapper(ReaderMapper.class);
