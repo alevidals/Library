@@ -10,4 +10,11 @@ public final class TestDataUtil {
                 .title("The book")
                 .build();
     }
+
+    public static Book createTestBook2() {
+        return Book.builder()
+                .isbn("978-3-16-148410-1")
+                .title("The book")
+                .build();
+    }
 }
