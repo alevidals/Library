@@ -28,6 +28,14 @@ public final class TestDataUtil {
                 .build();
     }
 
+    public static Reader createTestReader2() {
+        return Reader.builder()
+                .document("11111111K")
+                .name("Foo")
+                .surnames("Bar")
+                .build();
+    }
+
     public static Loan createTestLoan(Book book, Reader reader) {
         return Loan.builder()
                 .book(book)
