@@ -1,6 +1,8 @@
 package com.alevidals.library;
 
 import com.alevidals.library.model.Book;
+import com.alevidals.library.model.Loan;
+import com.alevidals.library.model.Reader;
 
 public final class TestDataUtil {
 
@@ -15,6 +17,21 @@ public final class TestDataUtil {
         return Book.builder()
                 .isbn("978-3-16-148410-1")
                 .title("The book")
+                .build();
+    }
+
+    public static Reader createTestReader() {
+        return Reader.builder()
+                .document("44444444K")
+                .name("Foo")
+                .surnames("Bar")
+                .build();
+    }
+
+    public static Loan createTestLoan(Book book, Reader reader) {
+        return Loan.builder()
+                .book(book)
+                .reader(reader)
                 .build();
     }
 }

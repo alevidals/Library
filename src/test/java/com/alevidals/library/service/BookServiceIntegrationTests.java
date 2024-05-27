@@ -2,7 +2,6 @@ package com.alevidals.library.service;
 
 import com.alevidals.library.TestDataUtil;
 import com.alevidals.library.model.Book;
-import com.alevidals.library.service.impl.BookServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -21,10 +19,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class BookServiceIntegrationTests {
 
-    private BookServiceImpl bookService;
+    private BookService bookService;
 
     @Autowired
-    public BookServiceIntegrationTests(BookServiceImpl bookService) {
+    public BookServiceIntegrationTests(BookService bookService) {
         this.bookService = bookService;
     }
 
@@ -38,7 +36,7 @@ public class BookServiceIntegrationTests {
     }
 
     @Test
-    public void testThatBookMultipleCanBeCreatedAndRecalled() {
+    public void testThatMultipleBooksCanBeCreatedAndRecalled() {
         Book book = TestDataUtil.createTestBook();
         bookService.save(book);
         Book book2 = TestDataUtil.createTestBook2();
@@ -61,7 +59,6 @@ public class BookServiceIntegrationTests {
     public void testThatBookCanBePartialUpdated() {
         Book book = TestDataUtil.createTestBook();
         bookService.save(book);
-
         book.setTitle("UPDATED");
         bookService.partialUpdate(book.getId(), book);
         assertThat(book.getTitle()).isEqualTo("UPDATED");
